@@ -17,14 +17,19 @@ public class Activity {
         this.provider = provider;
     }
 
-    public Money getTotalFee(Bag bag, int numberOfCustomer) {
+    public Money getTotalFee(CustomersBag bag, int numberOfCustomer) {
         Money totalFee = this.fee.times(numberOfCustomer).minus(bag.getDiscountAmount(this.activityType));
         return totalFee;
     }
 
-    public void receivePayment(Bag bag, int numberOfCustomer){
+    public Money receivePayment(CustomersBag bag, int numberOfCustomer){
         Money totalFee = getTotalFee(bag, numberOfCustomer);
         bag.pay(totalFee, this.activityType);
         this.provider.getPaid(totalFee.times(0.5));
+        return totalFee;
+    }
+
+    public void cancelled(Money totalFee){
+        this.provider.losePaid(totalFee.times(0.5));
     }
 }

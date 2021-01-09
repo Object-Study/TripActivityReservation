@@ -21,14 +21,20 @@ public class Schedule {
         return this.maxCustomer >= this.totalNumberOfCustomer + numberOfCustomer;
     }
 
-    public Money calculateTotalFee(Bag bag, int numberOfCustomer){
+    public Money calculateTotalFee(CustomersBag bag, int numberOfCustomer){
         Money totalFee = this.activity.getTotalFee(bag, numberOfCustomer);
         return totalFee;
     }
 
-    public void progressPayment(Bag bag, int numberOfCustomer){
-        this.activity.receivePayment(bag, numberOfCustomer);
+    public Money progressPayment(CustomersBag bag, int numberOfCustomer){
+        return this.activity.receivePayment(bag, numberOfCustomer);
     }
 
-
+    public boolean progressRefunding(Money totalFee) {
+        if(refundPolicy.refundable(whenStarted)){
+            activity.cancelled(totalFee);
+            return true;
+        }
+        return false;
+    }
 }

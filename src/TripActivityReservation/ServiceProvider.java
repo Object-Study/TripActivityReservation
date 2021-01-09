@@ -12,7 +12,11 @@ public class ServiceProvider {
     }
 
     public void getPaid(Money paidAmount){
-        this.bag.getMoney(paidAmount);
+        this.bag.plusMoney(paidAmount);
+    }
+
+    public void losePaid(Money loseAmount){
+        this.bag.minusMoney(loseAmount);
     }
 
 }

@@ -1,15 +1,19 @@
 package TripActivityReservation;
 
+import TripActivityReservation.Pay.Payment;
+
 import java.util.ArrayList;
 
 public class Reservation {
     private Customer customer;
-    private Schdule schdule;
-    private ArrayList<Integer> selection;
+    private Schedule schedule;
+    private SelectedOptions selectedOption;
+    private boolean isConfirmed;
 
-    public Reservation(Customer customer, Schdule schdule, ArrayList<Integer> selection){
+    public Reservation(Customer customer, Schedule schedule, SelectedOptions selectedOptions, boolean isConfirmed){
         this.customer = customer;
-        this.schdule = schdule;
-        this.selection = selection;
+        this.schedule = schedule;
+        this.selectedOption = selectedOptions;
+        this.isConfirmed = isConfirmed;
     }
 }

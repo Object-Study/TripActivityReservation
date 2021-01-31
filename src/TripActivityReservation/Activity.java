@@ -9,19 +9,19 @@ import java.util.Scanner;
 public class Activity {
     private ArrayList<Option> options = new ArrayList<>();
 
-    public ArrayList<Integer> selectOption(LocalDateTime whenStarted){
-        ArrayList<Integer> selection = new ArrayList<>();
+    public SelectedOptions selectOption(LocalDateTime whenStarted){
+        SelectedOptions selectedOptions = new SelectedOptions();
         Scanner sc = new Scanner(System.in);
         for(Option each : this.options){
             if(each.isSelectable(whenStarted)) {
                 each.printOptionName();
-                selection.add(Integer.parseInt(sc.next()));
+                selectedOptions.addTo(each, Integer.parseInt(sc.next()));
             }
             else{
-                selection.add(0);
+                selectedOptions.addTo(each, 0);
             }
         }
-        return selection;
+        return selectedOptions;
     }
 
     public Money calculateFee(ArrayList<Integer> selection){

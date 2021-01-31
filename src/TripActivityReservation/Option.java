@@ -18,7 +18,7 @@ public class Option {
         return true;
     }
 
-    public Money calculateFee(int numberOfCustomer){
-        return this.Fee.times(numberOfCustomer).times(1-discountRate);
+    public Money calculateFee(int userCount){
+        return this.Fee.times(userCount).times(1-discountRate);
     }
 }

@@ -3,13 +3,19 @@ package TripActivityReservation;
 import TripActivityReservation.Money.Money;
 
 public class Coupon {
+    private String couponName;
     private Money discountAmount;
+    private Money discountCondition;
 
-    public boolean isUsable(){
-        return true;
+    public void printCouponName(){
+        System.out.println(this.couponName);
     }
 
-    public Money getDiscountAmount() {
-        return discountAmount;
+    public boolean isUsable(Money fee){
+        return discountCondition.isLessThan(fee);
+    }
+
+    public Money discount(Money fee) {
+        return fee.minus(this.discountAmount);
     }
 }

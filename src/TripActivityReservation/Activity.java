@@ -23,12 +23,4 @@ public class Activity {
         }
         return selectedOptions;
     }
-
-    public Money calculateFee(ArrayList<Integer> selection){
-        Money totalFee = Money.ZERO;
-        for(int i = 0; i < selection.size(); i++){
-            totalFee.plus(this.options.get(i).calculateFee(selection.get(i)));
-        }
-        return totalFee;
-    }
 }

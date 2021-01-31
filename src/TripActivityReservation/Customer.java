@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Customer {
-    private ArrayList<Coupon> coupons;
+    private ArrayList<Coupon> coupons = new ArrayList<>();
 
     private Money selectCoupon(Money fee){
         Scanner sc = new Scanner(System.in);
